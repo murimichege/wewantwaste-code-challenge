@@ -1,0 +1,202 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import SkipSelectionPage from "@/components/skip-selection-page"
+import LoadingSpinner from "@/components/ui/loading-spinner"
+
+export default function Home() {
+  const [skips, setSkips] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchSkips = async () => {
+      try {
+        setLoading(true)
+        // For demo purposes, we'll use the provided API response
+        const demoData = [
+          {
+            id: 17933,
+            size: 4,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 277.95,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: true,
+            allows_heavy_waste: true,
+          },
+          {
+            id: 17934,
+            size: 6,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 305.15,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: true,
+            allows_heavy_waste: true,
+          },
+          {
+            id: 17935,
+            size: 8,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 374.85,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: true,
+            allows_heavy_waste: true,
+          },
+          {
+            id: 17936,
+            size: 10,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 399.5,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: false,
+            allows_heavy_waste: false,
+          },
+          {
+            id: 17937,
+            size: 12,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 438.6,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: false,
+            allows_heavy_waste: false,
+          },
+          {
+            id: 17938,
+            size: 14,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 470.05,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: false,
+            allows_heavy_waste: false,
+          },
+          {
+            id: 17939,
+            size: 16,
+            hire_period_days: 14,
+            transport_cost: null,
+            per_tonne_cost: null,
+            price_before_vat: 496.4,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:46.897146",
+            updated_at: "2025-04-03T13:51:46.897146",
+            allowed_on_road: false,
+            allows_heavy_waste: false,
+          },
+          {
+            id: 15124,
+            size: 20,
+            hire_period_days: 14,
+            transport_cost: 248,
+            per_tonne_cost: 248,
+            price_before_vat: null,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:40.344435",
+            updated_at: "2025-04-03T13:51:40.344435",
+            allowed_on_road: false,
+            allows_heavy_waste: true,
+          },
+          {
+            id: 15125,
+            size: 40,
+            hire_period_days: 14,
+            transport_cost: 248,
+            per_tonne_cost: 248,
+            price_before_vat: null,
+            vat: 20,
+            postcode: "NR32",
+            area: null,
+            forbidden: false,
+            created_at: "2025-04-03T13:51:40.344435",
+            updated_at: "2025-04-03T13:51:40.344435",
+            allowed_on_road: false,
+            allows_heavy_waste: false,
+          },
+        ]
+
+        setSkips(demoData)
+        setLoading(false)
+      } catch (err) {
+        setError(err.message)
+        setLoading(false)
+      }
+    }
+
+    fetchSkips()
+  }, [])
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#0f1117]">
+        <LoadingSpinner />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#0f1117]">
+        <div className="text-center p-6 bg-[#171c2c] rounded-lg shadow-md">
+          <h2 className="text-xl font-bold text-red-500 mb-2">Error</h2>
+          <p className="text-gray-300">{error}</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    )
+  }
+
+  return <SkipSelectionPage skips={skips} />
+}
+
