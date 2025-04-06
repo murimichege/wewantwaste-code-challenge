@@ -1,8 +1,7 @@
-# Skip Selection App
+# Waste Management Step Selection
 
-A modern, responsive web application for selecting and booking waste management skips. This application allows users to filter skips by waste type, compare different skip sizes, and make informed decisions based on their specific waste disposal needs.
+A modern, responsive web application for selecting and booking waste management. This application allows users to filter skips by waste type, compare different skip sizes, and make informed decisions based on their specific waste disposal needs.
 
-![Skip Selection App Screenshot](https://via.placeholder.com/800x450.png?text=Skip+Selection+App)
 
 ## Features
 
